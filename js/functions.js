@@ -5,7 +5,7 @@ const checkLength = (string, stringLength) => string.length < stringLength;
 //Функция для проверки, является ли строка палиндромом. Палиндром — это слово или фраза, которые одинаково читаются и слева направо и справа налево.
 
 const textTransform = (string) => {
-  let tempString = string.toLowerCase().replaceAll(' ', '');
+  const tempString = string.toLowerCase().replaceAll(' ', '');
   let reverseString = '';
   for (let i = 1; i <= tempString.length; i++) {
     reverseString += tempString.at(tempString.length - i);
@@ -37,3 +37,8 @@ const padStart = (string, minLength, pad) => {
   }
   return pad.slice(0, currentPad % pad.length) + pad.repeat(currentPad / pad.length) + string;
 };
+
+checkLength('проверяемая строка', 20);
+textTransform('ДовОд');
+checkNumbers ('ECMAScript 2022');
+padStart('q', 4, 'werty');
