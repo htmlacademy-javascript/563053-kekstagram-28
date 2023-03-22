@@ -1,3 +1,3 @@
 import {getPhotoDescriptionArray} from './data.js';
-
-getPhotoDescriptionArray();
+import {createMiniatures} from './renderPhotos.js';
+createMiniatures(getPhotoDescriptionArray());
