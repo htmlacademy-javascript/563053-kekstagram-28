@@ -1,17 +1,20 @@
-const bigPictureArea = document.querySelector('.big-picture');
+import { isEscKey } from './utils';
+
 const body = document.querySelector('body');
+const bigPictureArea = document.querySelector('.big-picture');
 const commentLoader = document.querySelector('.comments-loader');
 const commentCount = document.querySelector('.social__comment-count');
 const photoCloseButton = document.querySelector('.big-picture__cancel');
 
 const onDocumentKeydown = (evt) => {
-  if (evt.keyCode === 27) {
+  if (isEscKey(evt)) {
     closePhoto();
   }
 };
 
 function closePhoto () {
   bigPictureArea.classList.add('hidden');
+  body.classList.remove('modal-open');
   document.removeEventListener('keydown', onDocumentKeydown);
 }
 
