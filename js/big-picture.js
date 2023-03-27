@@ -1,16 +1,16 @@
 import {isEscKey} from './utils.js';
 
-const COMMENTS_PER_PORTION = 5;
 let commentsShown = 0;
+const COMMENTS_PER_PORTION = 5;
+const body = document.querySelector('body');
 const commentList = document.querySelector('.social__comments');
 const bigPictureArea = document.querySelector('.big-picture');
-const body = document.querySelector('body');
 const commentLoader = document.querySelector('.comments-loader');
 const commentCount = document.querySelector('.social__comment-count');
 const photoCloseButton = document.querySelector('.big-picture__cancel');
 
-const onDocumentKeydown = () => {
-  if (isEscKey) {
+const onDocumentKeydown = (evt) => {
+  if (isEscKey(evt)) {
     closePhoto();
   }
 };
