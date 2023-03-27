@@ -62,8 +62,6 @@ function closePhoto () {
 
 
 const showBigPicture = (picture) => {
-  console.log(picture.comments);
-
   bigPictureArea.classList.remove('hidden');
   fillPhotoInfo(picture);
   fillCommentList(picture.comments);
