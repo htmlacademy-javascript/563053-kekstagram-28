@@ -26,7 +26,7 @@ const COMMENT_MESSAGES = [
 ];
 
 const NUMBER_OF_PHOTOS = 25;
-const NUMBER_OF_COMMENTS = 10;
+const NUMBER_OF_COMMENTS = 15;
 
 const photoCommentsID = createRandomId(1, 100);
 const photoDescriptionID = createRandomId(1, 25);

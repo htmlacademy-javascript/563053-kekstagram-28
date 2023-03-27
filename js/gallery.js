@@ -9,7 +9,7 @@ const renderGallery = (pictures) => {
 
     if (miniature) {
       const picture = pictures.find(
-        (item) => item.id === +miniature.dataset.miniatureId
+        (item) => item.id === Number(miniature.dataset.miniatureId)
       );
       return showBigPicture(picture);
     }
