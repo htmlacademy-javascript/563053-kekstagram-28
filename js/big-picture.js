@@ -1,14 +1,15 @@
 import {onPressEsc} from './utils.js';
 
 const COMMENTS_PER_PORTION = 5;
-let commentsShown = 0;
+
+const body = document.querySelector('body');
 const commentList = document.querySelector('.social__comments');
 const bigPictureArea = document.querySelector('.big-picture');
-const body = document.querySelector('body');
 const commentLoader = document.querySelector('.comments-loader');
 const commentCount = document.querySelector('.social__comment-count');
 const photoCloseButton = document.querySelector('.big-picture__cancel');
 
+let commentsShown = 0;
 
 const createComment = ({avatar, name, message}) => {
   const comment = document.createElement('li');
@@ -55,15 +56,15 @@ const showBigPicture = (picture) => {
     fillCommentList(picture.comments);
   };
 
-  const onDocumentKeydown = () => {
-    onPressEsc(closePhoto);
+  const onDocumentKeydown = (evt) => {
+    onPressEsc(evt, closePhoto);
   };
 
   function closePhoto () {
     bigPictureArea.classList.add('hidden');
     body.classList.remove('modal-open');
     commentsShown = 0;
-    document.removeEventListener('keydown', onDocumentKeydown);
+    body.removeEventListener('keydown', onDocumentKeydown);
     commentLoader.removeEventListener('click', onLoaderClick);
   }
 
@@ -72,7 +73,7 @@ const showBigPicture = (picture) => {
   fillCommentList(picture.comments);
   body.classList.add('modal-open');
   photoCloseButton.addEventListener('click', closePhoto);
-  document.addEventListener('keydown', onDocumentKeydown);
+  body.addEventListener('keydown', onDocumentKeydown);
   commentLoader.addEventListener('click', onLoaderClick);
 };
 

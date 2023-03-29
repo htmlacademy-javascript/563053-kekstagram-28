@@ -7,9 +7,9 @@ const getRandomInteger = (min, max) => {
 };
 
 const isEscKey = (evt) => evt.key === 'Escape';
-const onPressEsc = (func) => {
-  if (isEscKey) {
-    func();
+const onPressEsc = (evt, cb) => {
+  if (isEscKey(evt)) {
+    cb();
   }
 };
 
