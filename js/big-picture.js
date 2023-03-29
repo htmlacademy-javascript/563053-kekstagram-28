@@ -1,19 +1,14 @@
-import {isEscKey} from './utils.js';
+import {onPressEsc} from './utils.js';
 
-let commentsShown = 0;
 const COMMENTS_PER_PORTION = 5;
-const body = document.querySelector('body');
+let commentsShown = 0;
 const commentList = document.querySelector('.social__comments');
 const bigPictureArea = document.querySelector('.big-picture');
+const body = document.querySelector('body');
 const commentLoader = document.querySelector('.comments-loader');
 const commentCount = document.querySelector('.social__comment-count');
 const photoCloseButton = document.querySelector('.big-picture__cancel');
 
-const onDocumentKeydown = (evt) => {
-  if (isEscKey(evt)) {
-    closePhoto();
-  }
-};
 
 const createComment = ({avatar, name, message}) => {
   const comment = document.createElement('li');
@@ -53,24 +48,32 @@ const fillCommentList = (comments) => {
   commentCount.innerHTML = `${commentsShown} из <span class="comments-count">${comments.length}</span> комментариев`;
 };
 
-function closePhoto () {
-  bigPictureArea.classList.add('hidden');
-  body.classList.remove('modal-open');
-  commentsShown = 0;
-  document.removeEventListener('keydown', onDocumentKeydown);
-}
-
 
 const showBigPicture = (picture) => {
+
+  const onLoaderClick = () => {
+    fillCommentList(picture.comments);
+  };
+
+  const onDocumentKeydown = () => {
+    onPressEsc(closePhoto);
+  };
+
+  function closePhoto () {
+    bigPictureArea.classList.add('hidden');
+    body.classList.remove('modal-open');
+    commentsShown = 0;
+    document.removeEventListener('keydown', onDocumentKeydown);
+    commentLoader.removeEventListener('click', onLoaderClick);
+  }
+
   bigPictureArea.classList.remove('hidden');
   fillPhotoInfo(picture);
   fillCommentList(picture.comments);
   body.classList.add('modal-open');
   photoCloseButton.addEventListener('click', closePhoto);
   document.addEventListener('keydown', onDocumentKeydown);
-  commentLoader.addEventListener('click', () => {
-    fillCommentList(picture.comments);
-  });
+  commentLoader.addEventListener('click', onLoaderClick);
 };
 
 export {showBigPicture};
