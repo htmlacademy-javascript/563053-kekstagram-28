@@ -1,3 +1,5 @@
+import { resetEffects } from './effects.js';
+import { resetScale } from './scale.js';
 import { onPressEsc } from './utils.js';
 
 const body = document.querySelector('body');
@@ -30,6 +32,10 @@ const closeForm = () => {
   body.classList.remove('modal-open');
   body.removeEventListener('keydown', onDocumentKeydown);
   uploader.value = '';
+  form.reset();
+  resetScale();
+  resetEffects();
+  pristine.reset();
 };
 
 const isTextFieldFocused = () =>
@@ -69,7 +75,13 @@ pristine.addValidator(
   validateTags,
   TAG_ERROR_TEXT);
 
+const onFormSubmit = (evt) => {
+  evt.preventDefault();
+  pristine.validate();
+};
+
 uploader.addEventListener('change', onChangeUploader);
+form.addEventListener('submit', onFormSubmit);
 
 const checkform = () => uploader.addEventListener('change', onChangeUploader);
 
