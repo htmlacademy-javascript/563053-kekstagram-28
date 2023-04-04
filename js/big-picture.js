@@ -57,10 +57,10 @@ const showBigPicture = (picture) => {
   };
 
   const onDocumentKeydown = (evt) => {
-    onPressEsc(evt, closePhoto);
+    onPressEsc(evt, onClosePhotoClick);
   };
 
-  function closePhoto () {
+  function onClosePhotoClick () {
     bigPictureArea.classList.add('hidden');
     body.classList.remove('modal-open');
     commentsShown = 0;
@@ -72,7 +72,7 @@ const showBigPicture = (picture) => {
   fillPhotoInfo(picture);
   fillCommentList(picture.comments);
   body.classList.add('modal-open');
-  photoCloseButton.addEventListener('click', closePhoto);
+  photoCloseButton.addEventListener('click', onClosePhotoClick);
   body.addEventListener('keydown', onDocumentKeydown);
   commentLoader.addEventListener('click', onLoaderClick);
 };
