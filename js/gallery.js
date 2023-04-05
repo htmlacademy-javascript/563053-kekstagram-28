@@ -1,4 +1,4 @@
-import { createMiniatures } from './renderPhotos.js';
+import {createMiniatures} from './renderPhotos.js';
 import {showBigPicture} from './big-picture.js';
 
 const container = document.querySelector('.pictures');

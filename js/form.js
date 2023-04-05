@@ -1,6 +1,6 @@
-import { resetEffects } from './effects.js';
-import { resetScale } from './scale.js';
-import { onPressEsc } from './utils.js';
+import {resetEffects} from './effects.js';
+import {resetScale} from './scale.js';
+import {onPressEsc} from './utils.js';
 
 const body = document.querySelector('body');
 const form = document.querySelector('.img-upload__form');

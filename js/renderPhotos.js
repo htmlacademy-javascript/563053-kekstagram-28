@@ -22,4 +22,4 @@ const createMiniatures = (pictures) => {
   pictureArea.append(pictureFragment);
 };
 
-export { createMiniatures };
+export {createMiniatures};
