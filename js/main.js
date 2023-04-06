@@ -2,7 +2,7 @@ import {renderGallery} from './gallery.js';
 import {checkform} from './form.js';
 import {getData, sendData} from './api.js';
 import {showAlert} from './utils.js';
-import {showModal} from './modals.js';
+import {errorModal, showModal, successModal} from './modals.js';
 checkform();
 
 /*setOnFormSubmit(async (data) => {
@@ -22,4 +22,4 @@ try {
   showAlert(err.message);
 }
 
-showModal;
+showModal(errorModal);
