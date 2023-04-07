@@ -1,7 +1,7 @@
-import {renderGallery} from './gallery.js';
-import {setOnFormSubmit, closeForm} from './form.js';
-import {getData, sendData} from './api.js';
 import {showAlert} from './utils.js';
+import {renderGallery} from './gallery.js';
+import {getData, sendData} from './api.js';
+import {setOnFormSubmit, closeForm} from './form.js';
 import {errorModal, showModal, successModal} from './modals.js';
 
 setOnFormSubmit(async (data) => {
