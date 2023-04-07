@@ -1,19 +1,18 @@
 import {renderGallery} from './gallery.js';
-import {checkform} from './form.js';
+import {setOnFormSubmit, closeForm} from './form.js';
 import {getData, sendData} from './api.js';
 import {showAlert} from './utils.js';
 import {errorModal, showModal, successModal} from './modals.js';
-checkform();
 
-/*setOnFormSubmit(async (data) => {
+setOnFormSubmit(async (data) => {
   try {
     await sendData(data);
     closeForm();
-    showSuccessMessage();
+    showModal(successModal);
   } catch {
-    showErrorMessage();
+    showModal(errorModal);
   }
-});*/
+});
 
 try {
   const data = await getData();
@@ -22,4 +21,4 @@ try {
   showAlert(err.message);
 }
 
-showModal(errorModal);
+
