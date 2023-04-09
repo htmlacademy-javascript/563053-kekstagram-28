@@ -1,5 +1,6 @@
 import {resetEffects} from './effects.js';
 import {resetScale} from './scale.js';
+import {fillPhotoBlock} from './uploadedPhoto.js';
 import {onPressEsc} from './utils.js';
 
 const body = document.querySelector('body');
@@ -48,6 +49,7 @@ function onCloseButtonClick() {
 }
 
 const onChangeUploader = () => {
+  fillPhotoBlock();
   showForm();
 };
 
