@@ -3,6 +3,10 @@ import {resetScale} from './scale.js';
 import {fillPhotoBlock} from './uploadedPhoto.js';
 import {onPressEsc} from './utils.js';
 
+const TAG_ERROR_TEXT = 'Неправильно указаны хэштеги';
+const MAX_HASHTAG_COUNT = 5;
+const VALID_SYMBOLS = /^#[a-zа-яё0-9]{1,19}$/i;
+
 const body = document.querySelector('body');
 const form = document.querySelector('.img-upload__form');
 const uploader = document.querySelector('#upload-file');
@@ -11,10 +15,6 @@ const closeButtonOverlay = document.querySelector('#upload-cancel');
 const inputHashtag = document.querySelector('.text__hashtags');
 const commentsField = document.querySelector('.text__description');
 const submitButton = document.querySelector('.img-upload__submit');
-
-const TAG_ERROR_TEXT = 'Неправильно указаны хэштеги';
-const MAX_HASHTAG_COUNT = 5;
-const VALID_SYMBOLS = /^#[a-zа-яё0-9]{1,19}$/i;
 
 const pristine = new Pristine(form, {
   classTo: 'img-upload__field-wrapper',
