@@ -15,17 +15,17 @@ const ErrorText = {
   SEND_DATA: 'Не удалось отправить данные на сервер. Попробуйте еще раз'
 };
 
-const load = (route, errorText, method = Method.GET, body = null) =>
-  fetch(`${ACADEMY_URL}${route}`, {method, body})
-    .then((responce) => {
-      if (!responce.ok) {
-        throw new Error();
-      }
-      return responce.json();
-    })
-    .catch(() => {
-      throw new Error(errorText);
-    });
+const load = (async (route, errorText, method = Method.GET, body = null) => {
+  try {
+    const responce = await fetch(`${ACADEMY_URL}${route}`, {method, body});
+    if (!responce.ok) {
+      throw new Error();
+    }
+    return responce.json();
+  } catch {
+    throw new Error(errorText);
+  }
+});
 
 const getData = () => load(Route.GET, ErrorText.GET_DATA);
 

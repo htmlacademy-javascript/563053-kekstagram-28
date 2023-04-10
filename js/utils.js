@@ -50,6 +50,18 @@ const createRandomId = (min, max) => {
   };
 };
 
+const debounce = (callback, timeoutDelay = 500) => {
+
+  let timeoutId;
+
+  return (...rest) => {
+
+    clearTimeout(timeoutId);
+
+    timeoutId = setTimeout(() => callback.apply(this, rest), timeoutDelay);
+  };
+};
+
 const getRandomArrayElement = (elements) => elements[getRandomInteger(0, elements.length - 1)];
 
-export {getRandomInteger, getRandomArrayElement, createRandomId, isEscKey, onPressEsc, showAlert};
+export {getRandomInteger, getRandomArrayElement, createRandomId, isEscKey, onPressEsc, showAlert, debounce};
